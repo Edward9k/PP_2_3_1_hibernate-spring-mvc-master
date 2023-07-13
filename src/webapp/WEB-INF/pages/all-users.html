@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>All Users</title>
 </head>
 <style>
 
@@ -31,8 +32,14 @@
         <td th:text="${user.getSurname()}"></td>
         <td th:text="${user.getAge()}"></td>
         <td th:text="${user.getJob()}"></td>
-        <td><a th:href="@{/users/{id}/update(id=${user.getId()})}">update</a>
-        <td><a th:href="@{/users/delete/{id}(id=${user.getId()})}">delete</a>
+        <td>
+            <form th:action="@{/users/{id}/update(id=${user.getId()})}">
+                <input type="submit" value="update"/>
+            </form>
+        <td>
+            <form th:method="DELETE" th:action="@{/users/delete/{id}(id=${user.getId()})}">
+                <input type="submit" value="delete"/>
+            </form>
     </tr>
 </table>
 <a href="users/new"><input type="button" value="Create new user"></a>
